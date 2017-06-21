@@ -30,7 +30,6 @@ export const apiCall = async (
   params: Object = {},
   resFunc: ResponseExtractionFunc = res => res,
   isSilent: boolean = false,
-  shouldTimeout: boolean = true,
 ) => {
   try {
     // Show network activity indicator if this fetch is not silent
@@ -38,7 +37,6 @@ export const apiCall = async (
     const response = await timeout(
       await apiFetch(auth, route, params),
       () => { throw new Error(`Request timed out @ ${route}`); },
-      shouldTimeout,
     );
     if (response.status === 401) {
       // TODO: httpUnauthorized()
