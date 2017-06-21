@@ -1,4 +1,5 @@
 /* @flow */
+import { NOT_FOUND_USER } from '../constants';
 import { UserType } from '../types';
 
 const statusOrder = (status) => {
@@ -11,7 +12,7 @@ const statusOrder = (status) => {
 };
 
 export const getUserById = (users: any[], userId: number) =>
-  users.find(user => user.id === userId);
+  users.find(user => user.id === userId) || NOT_FOUND_USER;
 
 export const groupUsersByInitials = (users: any[]): Object =>
   users.reduce((accounts, x) => {

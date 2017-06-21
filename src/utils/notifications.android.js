@@ -1,4 +1,5 @@
 /* @flow */
+/* @flow */
 import { NotificationsAndroid, PendingNotifications } from 'react-native-notifications';
 
 import registerGCM from '../api/registerGCM';

@@ -1,3 +1,4 @@
+/* @flow */
 import { Narrow, Message } from '../types';
 import { normalizeRecipients } from './message';
 
@@ -39,7 +40,7 @@ export const isSpecialNarrow = (narrow: Narrow): boolean =>
   narrow.length === 1 &&
   narrow[0].operator === 'is';
 
-export const streamNarrow = (stream): Narrow => [{
+export const streamNarrow = (stream: string): Narrow => [{
   operator: 'stream',
   operand: stream,
 }];
@@ -107,13 +108,13 @@ export const isMessageInNarrow = (message: Message, narrow: Narrow, selfEmail: s
   return false;
 };
 
-export const canSendToNarrow = (narrow) =>
+export const canSendToNarrow = (narrow: Narrow) =>
   isPrivateNarrow(narrow) ||
   isGroupNarrow(narrow) ||
   isStreamNarrow(narrow) ||
   isTopicNarrow(narrow);
 
-export const narrowFromMessage = (message) => {
+export const narrowFromMessage = (message: Message) => {
   if (Array.isArray(message.display_recipient)) {
     return groupNarrow(message.display_recipient.map(x => x.email));
   }
