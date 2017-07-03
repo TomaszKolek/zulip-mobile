@@ -1,7 +1,8 @@
 /* @flow */
-import { NOT_FOUND_USER } from '../constants';
 import uniqby from 'lodash.uniqby';
 import type { UserType } from '../types';
+import { NOT_FOUND_USER } from '../constants';
+
 
 const statusOrder = (status) => {
   switch (status) {
